@@ -64,7 +64,6 @@ typedef struct	t_object {
 	char		color[5];
 	int			hp;
 }t_object;
-// t_enemyとt_objectで管理すべき
 
 typedef struct s_panel {
 	char 			**buf;

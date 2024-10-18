@@ -151,7 +151,7 @@ static void	enemy_action(t_screen *screen) {
 	} else {
 		count = 0;
 	}
-	ran = rand() % 7;
+	ran = rand() % 5;
 	bullet.c = '+';
 	bullet.hp = 1;
 	for (int i=0; i<screen->now_size_e; ++i) {
@@ -161,24 +161,22 @@ static void	enemy_action(t_screen *screen) {
 			set_speed_reach_player(&screen->enemy[i], &screen->player, &bullet, 0.5);
 			switch (ran) {
 			case 0:
-			case 1:
-			case 2:
 				memcpy(bullet.color, WHITE, SIZE_COLOR);
 				create_bullet(screen, &bullet);
 				break;
-			case 3:
+			case 1:
 				memcpy(bullet.color, RED, SIZE_COLOR);
 				bullet.hp = 3;
 				create_bullet(screen, &bullet);
 				break;
-			case 4:
+			case 2:
 				memcpy(bullet.color, BLUE, SIZE_COLOR);
 				bullet.x_speed = -5;
 				create_bullet(screen, &bullet);
 				bullet.x_speed = 5;
 				create_bullet(screen, &bullet);
 				break;
-			case 5:
+			case 3:
 				memcpy(bullet.color, YELLOW, SIZE_COLOR);
 				create_bullet(screen, &bullet);
 				bullet.x_speed = -1;
@@ -186,7 +184,7 @@ static void	enemy_action(t_screen *screen) {
 				bullet.x_speed = 1;
 				create_bullet(screen, &bullet);
 				break;
-			case 6:
+			case 4:
 				bullet.hp = 2;
 				memcpy(bullet.color, GREEN, SIZE_COLOR);
 				create_bullet(screen, &bullet);

@@ -90,7 +90,7 @@ void	initialized_cell(t_screen *screen) {
 	for (int i=0; i<SCREEN_H; ++i) {
 		for (int j=0; j<SCREEN_W; ++j) {
 			memcpy(screen->cells[i][j].obj_color , WHITE, SIZE_COLOR);
-			memcpy(screen->cells[i][j].back_color , B_WHITE, SIZE_COLOR);
+			memcpy(screen->cells[i][j].back_color , WHITE, SIZE_COLOR);
 			screen->cells[i][j].object = ' ';
 		}
 	}
