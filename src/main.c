@@ -13,7 +13,6 @@ int	main(void) {
 		pthread_setname_np(pthread_self(), "main");
 	#endif
 
-
 	// init
 	screen = screen_init();
 	if (screen == NULL) {
@@ -59,14 +58,15 @@ int	main(void) {
 	pthread_join(read_panel_thread, NULL);
 
 	// Score Display
+	FlushConsoleInputBuffer(GetStdHandle(STD_INPUT_HANDLE));
 	system("cls");
 	screen->score += screen->player.hp * 100;
-	printf("\33[%d;%dHscore:%d", SCREEN_H / 2, SCREEN_W / 2 - 8, screen->score);
+	printf("\33[%d;%dHscore:%d\n", SCREEN_H / 2, SCREEN_W / 2 - 8, screen->score);
+	printf("%.*s", SCREEN_W / 2, "\n");
 
 	// cleanup
 	pthread_mutex_destroy(&g_mutex);
 	free_t_screen(screen);
 	printf("\033[?25h");
-	fflush(stdin);
 	exit(0);
 }

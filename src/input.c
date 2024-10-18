@@ -3,11 +3,11 @@
 // As for the HP reduction, it is in the hit detection.
 #include "shooting.h"
 
-static void	get_key_input(int *key_status) {
+static void	get_key_input(char *key_status) {
 	int	loop;
 
 	loop = 0;
-	memset(key_status, 0, sizeof(int) * (E_KEY_END + 1));
+	memset(key_status, 0, sizeof(char) * (E_KEY_END - 1));
 	while (1) {
 		if (GetKeyState(' ') & 0x8000 || GetKeyState('\r') & 0x8000 || GetKeyState('\n') & 0x8000) {
 			key_status[E_KEY_SHOT] = 1;
@@ -32,7 +32,7 @@ static void	get_key_input(int *key_status) {
 	sleep_for_milliseconds(1);
 }
 
-static void	handle_key_input(t_screen *screen, int *key_status) {
+static void	handle_key_input(t_screen *screen, char *key_status) {
 	t_object bullet;
 
 	if (key_status[E_KEY_SHOT]) {
@@ -97,7 +97,7 @@ static void	handle_key_input(t_screen *screen, int *key_status) {
 
 void	*player_input(void *arg) {
 	t_screen	*screen;
-	int			key_status[E_KEY_END];
+	char		key_status[E_KEY_END];
 
 	screen = (t_screen *)arg;
 	#ifdef DEBUG

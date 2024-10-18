@@ -97,7 +97,7 @@ static int	read_panel_sustain(t_panel *panel) {
 	// The first call processes SCREEN_H rows
 	while (panel->lines_read < SCREEN_H) {
 		if (fgets(buffer, sizeof(buffer), panel->file) != NULL) {
-			strncpy(panel->buf[panel->lines_read], buffer, SCREEN_W + 1);
+			strncpy(panel->buf[panel->lines_read], buffer, SCREEN_W + 2);
 			++panel->lines_read;
 		} else {
 			fclose(panel->file);
@@ -114,7 +114,7 @@ static int	read_panel_sustain(t_panel *panel) {
 			strcpy(panel->buf[i - 1], panel->buf[i]);
 		}
 		if (fgets(buffer, sizeof(buffer), panel->file) != NULL) {
-			strncpy(panel->buf[SCREEN_H - 1], buffer, SCREEN_W + 1);
+			strncpy(panel->buf[SCREEN_H - 1], buffer, SCREEN_W + 2);
 			++panel->lines_read;
 		} else {
 			fclose(panel->file);

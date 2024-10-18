@@ -77,7 +77,7 @@ void	*draw_screen(void *arg) {
 		draw_object_to_cell(screen);
 		rewrite_buf_with_cell(screen);
 		// Move the cursor position to the upper left
-		printf("\033[Hscore:%d\n%sHP:%d\n", screen->score, screen->buffer, screen->player.hp);
+		printf("\033[Hscore:%d\n%sHP:%d   \n", screen->score, screen->buffer, screen->player.hp);
 		pthread_mutex_unlock(&g_mutex);
 
 		// wait fps
